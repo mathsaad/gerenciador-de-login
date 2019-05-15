@@ -29,12 +29,12 @@ public class User {
     private String telefone;
     @NotNull
     @NotEmpty
-    private String perfil;
+    private Enum<Perfil> perfil;
 
     public User() {
     }
 
-    public User(String name, String email, String senha, Endereco endereco, String telefone, String perfil) {
+    public User(String name, String email, String senha, Endereco endereco, String telefone, Enum<Perfil> perfil) {
         this.name = name;
         this.email = email;
         this.senha = senha;
@@ -91,11 +91,11 @@ public class User {
         this.telefone = telefone;
     }
 
-    public String getPerfil() {
+    public Enum<Perfil> getPerfil() {
         return perfil;
     }
 
-    public void setPerfil(String perfil) {
+    public void setPerfil(Enum<Perfil> perfil) {
         this.perfil = perfil;
     }
 }

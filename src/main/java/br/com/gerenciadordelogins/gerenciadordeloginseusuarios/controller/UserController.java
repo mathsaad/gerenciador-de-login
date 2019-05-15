@@ -1,7 +1,7 @@
 package br.com.gerenciadordelogins.gerenciadordeloginseusuarios.controller;
 
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.documents.User;
-import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.service.IUserService;
+import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.service.UserService;
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.service.exceptions.PerfilIncorretoException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +16,9 @@ import java.util.Optional;
 @RequestMapping("/users")
 public class UserController {
 
-  private IUserService userService;
+  private UserService userService;
 
-    public UserController(IUserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -32,7 +32,7 @@ public class UserController {
         try{
             return Response.ok().entity(userService.saveUser(user)).build();
         }catch (PerfilIncorretoException e){
-            return Response.status(e.getErrorResponse().getStatus()).type(MediaType.APPLICATION_JSON).entity(e.getErrorResponse()).build();
+            return Response.status(Response.Status.BAD_REQUEST).type(MediaType.APPLICATION_JSON).entity(e).build();
         }
     }
 
