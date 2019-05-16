@@ -28,12 +28,12 @@ public class UserController {
     }
 
     @GetMapping
-    public Page<User> listAllUsers(@QueryParam("page") Optional<Integer> page, @QueryParam("size") Optional<Integer> size, @QueryParam("sort") Optional<String> sort, @QueryParam("order") Optional<String> order){
+    public Page<User> listAllUsers(@QueryParam("page") Optional<Integer> page, @QueryParam("size") Optional<Integer> size, @QueryParam("sortBy") Optional<String> sortBy, @QueryParam("order") Optional<String> order){
         if (order.equals(Optional.empty())){
-            return userService.findAllUser(PageRequest.of(page.orElse(0), size.orElse(3), Sort.by(Sort.Direction.ASC, sort.orElse("name"))));
+            return userService.findAllUser(PageRequest.of(page.orElse(0), size.orElse(3), Sort.by(Sort.Direction.ASC, sortBy.orElse("name"))));
         }
         Sort.Direction direction = Sort.Direction.fromString(order.get());
-        return userService.findAllUser(PageRequest.of(page.orElse(0), size.orElse(3), Sort.by(direction, sort.orElse("name"))));
+        return userService.findAllUser(PageRequest.of(page.orElse(0), size.orElse(3), Sort.by(direction, sortBy.orElse("name"))));
     }
 
     @PostMapping
