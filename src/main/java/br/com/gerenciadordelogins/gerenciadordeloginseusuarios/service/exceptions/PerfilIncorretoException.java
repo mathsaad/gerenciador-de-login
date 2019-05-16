@@ -3,6 +3,6 @@ package br.com.gerenciadordelogins.gerenciadordeloginseusuarios.service.exceptio
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Perfil Incorreto, são validos apenas perfís como ADMIN e USER")
+@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Perfil incorreto, são validos apenas perfís como ADMIN e USER")
 public class PerfilIncorretoException extends RuntimeException{
 }

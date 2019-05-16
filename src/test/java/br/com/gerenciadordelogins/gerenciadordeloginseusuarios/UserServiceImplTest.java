@@ -1,7 +1,6 @@
 package br.com.gerenciadordelogins.gerenciadordeloginseusuarios;
 
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.documents.Endereco;
-import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.documents.Perfil;
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.documents.User;
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.repository.UserRepository;
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.service.UserService;
@@ -36,6 +35,8 @@ import static org.mockito.Mockito.*;
         private String COMPLEMENTO = "apto 105 bloco B";
         private String TELEFONE = "999169117";
         private String SENHA = "1234gerenciador";
+        private String ADMIN = "ADMIN";
+        private String TESTE = "TESTE";
 
 
     @Before
@@ -52,7 +53,7 @@ import static org.mockito.Mockito.*;
         user.setSenha(SENHA);
         user.setendereco(endereco);
         user.setTelefone(TELEFONE);
-        user.setPerfil(Perfil.ADMIN);
+        user.setPerfil(ADMIN);
 
         when(userRepository.findById(ID)).thenReturn(Optional.empty());
     }
@@ -92,7 +93,7 @@ import static org.mockito.Mockito.*;
     @Test(expected = PerfilIncorretoException.class)
     public void nao_deve_cadastrar_usuario_com_perfil_diferente_de_admin_ou_user() throws PerfilIncorretoException {
         when(userService.findById(ID)).thenReturn(Optional.of(user));
-        user.setPerfil(Perfil.TEST);
+        user.setPerfil(TESTE);
         userService.saveUser(user);
     }
 

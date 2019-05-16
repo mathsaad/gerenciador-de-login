@@ -1,6 +1,5 @@
 package br.com.gerenciadordelogins.gerenciadordeloginseusuarios.service.impl;
 
-import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.documents.Perfil;
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.documents.User;
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.repository.UserRepository;
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.service.UserService;
@@ -22,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User usuario) throws PerfilIncorretoException {
-        if (usuario.getPerfil() == Perfil.ADMIN || usuario.getPerfil() == Perfil.USER){
+        if (usuario.getPerfil().equals("ADMIN")|| usuario.getPerfil().equals("USER")){
             return userRepository.save(usuario);
         }
         throw new PerfilIncorretoException();
