@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
@@ -66,7 +67,7 @@ import static org.mockito.Mockito.*;
 
     @Test
     public void verifica_se_findAll_é_chamado(){
-        userService.findAllUser();
+        userService.findAllUser(Pageable.unpaged());
         verify(userRepository).findAll();
     }
 

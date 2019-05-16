@@ -3,10 +3,15 @@ package br.com.gerenciadordelogins.gerenciadordeloginseusuarios.controller;
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.documents.User;
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.service.UserService;
 import br.com.gerenciadordelogins.gerenciadordeloginseusuarios.service.exceptions.PerfilIncorretoException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -23,8 +28,9 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> listAllUsers(){
-        return userService.findAllUser();
+    public Page<User> listAllUsers(@QueryParam("page") Optional<Integer> page, @QueryParam("size") Optional<Integer> size, @QueryParam("directionSort") String direction, @QueryParam("sortBy") Optional<String> sortBy){
+
+        return userService.findAllUser(PageRequest.of(page.orElse(0), size.orElse(3), Sort.Direction.ASC, sortBy.orElse("name")));
     }
 
     @PostMapping
