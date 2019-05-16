@@ -28,9 +28,12 @@ public class UserController {
     }
 
     @GetMapping
-    public Page<User> listAllUsers(@QueryParam("page") Optional<Integer> page, @QueryParam("size") Optional<Integer> size, @QueryParam("directionSort") String direction, @QueryParam("sortBy") Optional<String> sortBy){
-
-        return userService.findAllUser(PageRequest.of(page.orElse(0), size.orElse(3), Sort.Direction.ASC, sortBy.orElse("name")));
+    public Page<User> listAllUsers(@QueryParam("page") Optional<Integer> page, @QueryParam("size") Optional<Integer> size, @QueryParam("sort") Optional<String> sort, @QueryParam("order") Optional<String> order){
+        if (order.equals(Optional.empty())){
+            return userService.findAllUser(PageRequest.of(page.orElse(0), size.orElse(3), Sort.by(Sort.Direction.ASC, sort.orElse("name"))));
+        }
+        Sort.Direction direction = Sort.Direction.fromString(order.get());
+        return userService.findAllUser(PageRequest.of(page.orElse(0), size.orElse(3), Sort.by(direction, sort.orElse("name"))));
     }
 
     @PostMapping
@@ -43,9 +46,14 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User alterUser(@PathVariable("id") String id,@Valid @RequestBody User user){
-        user.setId(id);
-        return userService.editUser(user);
+    public Response alterUser(@PathVariable("id") String id,@Valid @RequestBody User user){
+        try{
+            user.setId(id);
+            return Response.ok().entity(userService.editUser(user)).build();
+        }catch (PerfilIncorretoException e){
+            return Response.status(Response.Status.BAD_REQUEST).type(MediaType.APPLICATION_JSON).entity(e).build();
+        }
+
     }
 
     @GetMapping("/{id}")

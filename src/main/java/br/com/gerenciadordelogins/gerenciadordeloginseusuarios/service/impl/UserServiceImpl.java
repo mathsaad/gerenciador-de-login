@@ -30,7 +30,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User editUser(User usuario) {
-        return userRepository.save(usuario);
+        if (usuario.getPerfil().equals("ADMIN") || usuario.getPerfil().equals("USER")) {
+            return userRepository.save(usuario);
+        }
+        throw new PerfilIncorretoException();
     }
 
     @Override
