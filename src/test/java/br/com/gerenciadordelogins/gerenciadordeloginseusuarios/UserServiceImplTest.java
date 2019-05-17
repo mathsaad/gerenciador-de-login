@@ -66,12 +66,6 @@ import static org.mockito.Mockito.*;
     }
 
     @Test
-    public void verifica_se_findAll_é_chamado(){
-        userService.findAllUser(Pageable.unpaged());
-        verify(userRepository).findAll();
-    }
-
-    @Test
     public void verifica_se_editar_e_chamado(){
         userService.editUser(user);
         verify(userRepository).save(user);
