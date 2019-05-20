@@ -1,0 +1,24 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: gerencaiadorspring
+  labels:
+    app: gerencaiadorspring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gerencaiadorspring
+  template:
+    metadata:
+      labels:
+        app: gerencaiadorspring
+    spec:
+      containers:
+        - name: gerencaiadorspring
+          image: saadapplestore/gerenciador-spring
+          env:
+            - name: localhost
+              value: mongodb://mongo:27017/gerenciador-login
+          ports:
+            - containerPort: 8080
