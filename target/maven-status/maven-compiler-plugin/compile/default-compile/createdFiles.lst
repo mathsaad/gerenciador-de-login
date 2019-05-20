@@ -1,0 +1,11 @@
+br/com/gerenciadordelogins/gerenciadordeloginseusuarios/ServletInitializer.class
+br/com/gerenciadordelogins/gerenciadordeloginseusuarios/repository/UserRepository.class
+br/com/gerenciadordelogins/gerenciadordeloginseusuarios/service/exceptions/PerfilIncorretoException.class
+br/com/gerenciadordelogins/gerenciadordeloginseusuarios/service/UserService.class
+br/com/gerenciadordelogins/gerenciadordeloginseusuarios/dbSeed.class
+br/com/gerenciadordelogins/gerenciadordeloginseusuarios/controller/UserController.class
+br/com/gerenciadordelogins/gerenciadordeloginseusuarios/GerenciadorDeLoginsEUsuariosApplication.class
+br/com/gerenciadordelogins/gerenciadordeloginseusuarios/security/SecurityConfig.class
+br/com/gerenciadordelogins/gerenciadordeloginseusuarios/service/impl/UserServiceImpl.class
+br/com/gerenciadordelogins/gerenciadordeloginseusuarios/documents/User.class
+br/com/gerenciadordelogins/gerenciadordeloginseusuarios/documents/Endereco.class

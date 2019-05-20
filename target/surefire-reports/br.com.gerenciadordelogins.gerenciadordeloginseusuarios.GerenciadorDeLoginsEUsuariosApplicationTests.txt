@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.com.gerenciadordelogins.gerenciadordeloginseusuarios.GerenciadorDeLoginsEUsuariosApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.04 s - in br.com.gerenciadordelogins.gerenciadordeloginseusuarios.GerenciadorDeLoginsEUsuariosApplicationTests

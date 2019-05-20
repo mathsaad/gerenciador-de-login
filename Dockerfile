@@ -1,4 +1,5 @@
-FROM openjdk:8-alpine
+FROM java:8
+FROM maven:alpine
 
 MAINTAINER Matheus Saad
 
@@ -12,4 +13,4 @@ COPY target/spring-mongo-docker.jar $PROJECT_HOME/spring-mongo-docker.jar
 
 WORKDIR $PROJECT_HOME
 
-CMD ["java", "-jar", "-Dspring.profiles.active=prod" ,"./spring-mongo-docker.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=prodmo   " ,"./spring-mongo-docker.jar"]
