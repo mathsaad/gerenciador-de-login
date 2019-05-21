@@ -13,4 +13,4 @@ COPY target/spring-mongo-docker.jar $PROJECT_HOME/spring-mongo-docker.jar
 
 WORKDIR $PROJECT_HOME
 
-CMD ["java", "-jar", "-Dspring.profiles.active=prodmo   " ,"./spring-mongo-docker.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=prod" ,"./spring-mongo-docker.jar"]
