@@ -1,24 +1,31 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: gerencaiadorspring
+  name: spring-docker
   labels:
-    app: gerencaiadorspring
+    app: spring-docker
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gerencaiadorspring
+      app: spring-docker
   template:
     metadata:
       labels:
-        app: gerencaiadorspring
+        app: spring-docker
     spec:
       containers:
-        - name: gerencaiadorspring
-          image: saadapplestore/gerenciador-spring
+        - name: spring-docker
+          image: saadapplestore/gerenciador-login-usuario
+          imagePullPolicy: IfNotPresent
           env:
-            - name: localhost
-              value: mongodb://mongo:27017/gerenciador-login
+            - name: MONGODB_HOST
+              value: mongodb
           ports:
             - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5

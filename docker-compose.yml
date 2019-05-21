@@ -4,7 +4,7 @@ services:
     build: .
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/gerenciador-login
-    container_name: spring-mongo
+    container_name: spring-docker
     ports:
       - 8080:8080
     depends_on:
@@ -15,7 +15,7 @@ services:
       - spring-mongo-net
   mongo:
     image: mongo
-    container_name: mongocontainer
+    container_name: mongo-docker
     ports:
       - 27017:27017
     command: mongod --smallfiles --logpath=/dev/null # --quiet
