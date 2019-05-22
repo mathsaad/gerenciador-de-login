@@ -37,6 +37,13 @@ Requisitos:
     EX: http://192.168.99.106:31960/users
 
 8º parametros para pesquisa:
+Autenticação necessária:
+para relizar login de administrador(Pondendo realizar todas as operações):
+Usuario: admin         -          Senha: admin
+
+para realizar login de usuario(Podendo realizar apenas operação de listagem):
+Usuario: user          -          Senha: user
+
 GET http://192.168.99.106:31960/users?page=0&size=3&sort=name&order=desc
 page = pagina que está visualizando
 size = numero de registros que são exibidos por pagina
