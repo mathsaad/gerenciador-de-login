@@ -43,6 +43,19 @@ size = numero de registros que são exibidos por pagina
 sort = atributo de User que deseja que seja ordenavel
 order = ordem da ordenação desc ou asc;
 
+deve retornar a lista de todos os usuarios cadastrados;
+
 9º parametros para inserir um usuario:
 POST http://192.168.99.106:31960/users
-
+{
+    "name": "nome",
+    "email": "email@email.com",
+    "senha": "1234",
+    endereco:{
+               "cep": "88048393",
+               "endereco": "servidao Braulina Maria Arcenio",
+               "complemento": "7 casa"
+               },
+    "telefone": "999999999",
+    "perfil": "ADMIN"
+}
